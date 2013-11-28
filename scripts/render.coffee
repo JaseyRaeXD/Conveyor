@@ -14,6 +14,7 @@ renderer.setClearColor(parameters.clearColor, 1.0)
 # Define a Render Loop
 render = () ->
   scene.simulate()                # Handle Physics
+  scene.update()                  # Handle Events
   renderer.render(scene, camera)  # Render the Scene
   requestAnimationFrame(render)   # Call Next Frame
 

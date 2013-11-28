@@ -40,6 +40,13 @@ box = new Physijs.BoxMesh(new THREE.CubeGeometry(10, 1, 10), new THREE.MeshLambe
 scene.add box
 scene.add box2
 
+# Update the Scene (Called Every Frame)
+Physijs.Scene::update = () ->
+  box.position.y += 0.1
+  box.rotation.y += 0.1
+  box.__dirtyPosition = true
+  box.__dirtyRotation = true
+
 # Forward Locals to Globals
 window.scene  = scene
 window.camera = camera
