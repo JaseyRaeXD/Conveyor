@@ -1,5 +1,8 @@
 # Load Configuration Variables
 cfg = window.cfg
+window.framecount = 0
+window.velocity = 5
+window.interval = 300
 
 # Load the Physics Engine
 Physijs.scripts.worker = "build/physijs/physijs_worker.js"
@@ -38,12 +41,16 @@ Physijs.Scene::update = () ->
   for belt in conveyor
 
     if belt.position.x >= 125
-      belt.position.x = -250
+      belt.position.x  -= 250
 
-    velocity = 3
     belt.setLinearVelocity(new THREE.Vector3(velocity,0,0))
     belt.position.x += 0.016 * velocity
     belt.__dirtyPosition = true
+
+  # Some Clever Spawning Algorithm
+  if framecount % interval is 0
+    window.spawn_object('PS9K1.png', 5, 5, 5)
+  framecount += 1
 
 # Forward Locals to Globals
 window.scene  = scene

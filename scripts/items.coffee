@@ -1,26 +1,36 @@
 ################################################################################
 window.items = []
-for x in [0..10]
 
+window.spawn_object = (image, height, width, depth) ->
   # Define Material Parameters
-  mass        = 10
+  mass        = 5
   friction    = 1
-  restitution = 0.5
+  restitution = 0.15
 
   # Create the Object Mesh
-  geometry = new THREE.CubeGeometry(5, 5, 5)
-  textures = THREE.ImageUtils.loadTexture('assets/textures/PS9K1.png')
+  geometry = new THREE.CubeGeometry(height, width, depth)
+  textures = THREE.ImageUtils.loadTexture('assets/textures/' + image)
   material = Physijs.createMaterial(
          new THREE.MeshLambertMaterial(map: textures), friction, restitution)
   mesh = new Physijs.BoxMesh(geometry, material, mass)
-  mesh.position.y = 15
-  mesh.position.x += x * 10 - 30
+  mesh.position.y = -50
+  mesh.position.x = -50
+
+  mesh.rotation.x = Math.random()
+  mesh.rotation.y = Math.random()
+  mesh.rotation.z = Math.random()
 
   mesh.__dirtyPosition = true
   mesh.__dirtyRotation = true
   items.push(mesh)
+  scene.add(mesh)
 
-(scene.add(mesh) for mesh in items)
+
+################################################################################
+
+# Create Initial Spawn
+# for x in [0..10]
+#  spawn_object('PS9K1.png', 5, 5, 5)
 
 ################################################################################
 for mesh in items
@@ -28,8 +38,3 @@ for mesh in items
     # blah
 
 ################################################################################
-
-# Locks the Z Axis
-#(box.setAngularFactor(new THREE.Vector3(0, 0, 1)) for box in items)
-#(box.setAngularVelocity(new THREE.Vector3(0, 0, 1)) for box in items)
-

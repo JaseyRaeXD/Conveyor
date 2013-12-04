@@ -1,22 +1,22 @@
 ################################################################################
 window.conveyor = []
-for x in [0..18]
+for x in [0..6]
 
   # Define Material Parameters
   mass        = 0
   friction    = 1
-  restitution = 0.15
-  tilesize    = 20
+  restitution = 0.05
+  tilesize    = 25
 
   # Create the Object Mesh
-  geometry = new THREE.CubeGeometry(tilesize, 2, tilesize)
+  geometry = new THREE.CubeGeometry(50, 2, tilesize)
   textures = THREE.ImageUtils.loadTexture('assets/textures/conveyor_belt.png')
   material = Physijs.createMaterial(
          new THREE.MeshLambertMaterial(map: textures), friction, restitution)
   mesh = new Physijs.BoxMesh(geometry, material, mass)
-  mesh.position.y = - 15
-  mesh.position.x += x * tilesize - 15 * tilesize
-  mesh.position.z -= 2
+  mesh.position.x = x * -50
+  mesh.position.y = - 80
+  mesh.position.z -= 5
 
   mesh.__dirtyPosition = true
   mesh.__dirtyRotation = true
