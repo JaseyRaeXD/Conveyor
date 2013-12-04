@@ -31,6 +31,7 @@ scene.addEventListener "update", ->
 
 # the scene's physics have finished updating
 selected = null
+mouse3d  = new THREE.Vector3(0,0,0)
 
 getMouseCoordinates = (event) ->
 
@@ -45,17 +46,27 @@ getMouseCoordinates = (event) ->
   raycaster = new THREE.Raycaster(camera.position, screen.sub(camera.position).normalize())
   intersect = raycaster.intersectObjects(items)
 
+  # Determine the Scaled Mouse Coordinates
+  direction = screen.sub(camera.position).normalize()
+  distance  = - camera.position.z / direction.z
+  position  = camera.position.clone().add(direction.multiplyScalar(distance))
+  mouse3d   = new THREE.Vector3(position.x, position.y, 0)
+  console.log mouse3d
+
   console.log(intersect.length)
   if intersect.length is 1 then selected = intersect[0]
+  if intersect.length is 1
+    console.log(intersect[0].point)
 
 onMove = (event) ->
   event.preventDefault()
-  getMouseCoordinates(event)
+  #getMouseCoordinates(event)
 
 onDown = (event) ->
   event.preventDefault()
   getMouseCoordinates(event)
-  items[0].applyCentralImpulse(new THREE.Vector3(50,0,0))
+
+  items[0].applyCentralImpulse(mouse3d.multiplyScalar(50))
 
   #items[0].applyCentralImpulse(10, 0)
 
