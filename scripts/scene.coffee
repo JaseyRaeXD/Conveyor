@@ -63,7 +63,7 @@ Physijs.Scene::update = () ->
       belt.position.x  -= 250
 
     belt.setLinearVelocity(new THREE.Vector3(velocity,0,0))
-    belt.position.x += 0.016 * velocity
+    belt.position.x += 0.0155 * velocity
     belt.__dirtyPosition = true
 
   # Some Clever Spawning Algorithm
