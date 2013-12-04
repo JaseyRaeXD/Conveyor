@@ -105,6 +105,7 @@ Physijs.Scene::update = () ->
   if framecount % interval is 0 then velocity += 0.05
 
   framecount += 1
+  score += framecount
 
 # Forward Locals to Globals
 window.scene  = scene
