@@ -69,9 +69,7 @@ onMove = (event) ->
     mouse_vector = getMouseCoordinates(event)
     resultant = mesh_vector.sub(mouse_vector)
     resultant = resultant.multiplyScalar(-1)
-
-    console.log(resultant.length())
-    selected.applyCentralImpulse(resultant.multiplyScalar(0.75))
+    selected.applyCentralImpulse(resultant.multiplyScalar(0.5))
 
 onDown = (event) ->
   event.preventDefault()

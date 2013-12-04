@@ -5,7 +5,7 @@ for x in [0..2]
   # Define Material Parameters
   mass        = 10
   friction    = 1
-  restitution = 0
+  restitution = 0.5
 
   # Create the Object Mesh
   geometry = new THREE.CubeGeometry(5, 5, 5)

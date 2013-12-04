@@ -2,7 +2,7 @@
 window.cfg = cfg = {}
 
 # Scene Configuration
-cfg.gravity = new THREE.Vector3(0, -9.81, 0)
+cfg.gravity = new THREE.Vector3(0, -50, 0)
 
 # Camera Configuration
 cfg.position = new THREE.Vector3(0, 30, 70)
