@@ -1,5 +1,5 @@
 ################################################################################
-conveyor = []
+window.conveyor = []
 for x in [0..10]
 
   # Define Material Parameters
@@ -13,7 +13,7 @@ for x in [0..10]
          new THREE.MeshLambertMaterial(), friction, restitution)
   mesh = new Physijs.BoxMesh(geometry, material, mass)
   mesh.position.y = - 15
-  mesh.position.x += x * 16 - 70
+  mesh.position.x += x * 15 - 70
 
   mesh.__dirtyPosition = true
   mesh.__dirtyRotation = true
