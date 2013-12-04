@@ -10,7 +10,7 @@ for x in [0..15]
 
   # Create the Object Mesh
   geometry = new THREE.CubeGeometry(tilesize, 2, tilesize)
-  textures = THREE.ImageUtils.loadTexture('assets/conveyor_belt.png')
+  textures = THREE.ImageUtils.loadTexture('assets/textures/conveyor_belt.png')
   material = Physijs.createMaterial(
          new THREE.MeshLambertMaterial(map: textures), friction, restitution)
   mesh = new Physijs.BoxMesh(geometry, material, mass)

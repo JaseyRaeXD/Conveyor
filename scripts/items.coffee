@@ -9,7 +9,7 @@ for x in [0..10]
 
   # Create the Object Mesh
   geometry = new THREE.CubeGeometry(5, 5, 5)
-  textures = THREE.ImageUtils.loadTexture('assets/PS9K1.png')
+  textures = THREE.ImageUtils.loadTexture('assets/textures/PS9K1.png')
   material = Physijs.createMaterial(
          new THREE.MeshLambertMaterial(map: textures), friction, restitution)
   mesh = new Physijs.BoxMesh(geometry, material, mass)
