@@ -15,7 +15,6 @@ parameters =
 renderer = new THREE.WebGLRenderer(parameters) # Render
 document.body.appendChild(renderer.domElement) # Canvas
 renderer.setSize(window.innerWidth, window.innerHeight)
-#renderer.setClearColor(parameters.clearColor, 0.1)
 
 # Define a Render Loop
 render = () ->
@@ -31,12 +30,3 @@ window.addEventListener "resize", ->
   renderer.setSize(window.innerWidth, window.innerHeight)
   camera.aspect = window.innerWidth / window.innerHeight
   camera.updateProjectionMatrix()
-
-# Record the Mouse Coordinates on Movement
-#window.addEventListener "mousemove", (event) ->
-#  console.log event.clientX
-#  console.log event.clientY
-
-#  camera.position.x -= 1
-#  scene.position.x -= 1
-  #camera.lookAt()
