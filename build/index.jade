@@ -6,8 +6,50 @@ html
     //- Site Metadata
     title Conveyor
 
+    script.
+      var start;
+
+      start = function() {
+        console.log("Starting Game");
+        var el = document.getElementById('titlescreen')
+        el.style.display = 'none';
+        el = document.getElementById('totalscore');
+        el.style.display = 'block';
+
+        // Preload Every Art Asset
+        $.get("assets/textures/brie-cheese-discolored.png", function() { return true; });
+        $.get("assets/textures/playstation-9001.png", function() { return true; });
+        $.get("assets/textures/brie-cheese-regular.png", function() { return true; });
+        $.get("assets/textures/playstation-regular.png", function() { return true; });
+        $.get("assets/textures/commodore-crunch-misprint.png", function() { return true; });
+        $.get("assets/textures/playstation-straight.png", function() { return true; });
+        $.get("assets/textures/commodore-crunch-regular.png", function() { return true; });
+        $.get("assets/textures/smash-orange-soda-crushed.png", function() { return true; });
+        $.get("assets/textures/conveyor-belt.png", function() { return true; });
+        $.get("assets/textures/smash-orange-soda-regular.png", function() { return true; });
+        $.get("assets/textures/conveyor-wheel.png", function() { return true; });
+        $.get("assets/textures/swiss-cheese-moldy.png", function() { return true; });
+        $.get("assets/textures/golden-do-rag-blue.png", function() { return true; });
+        $.get("assets/textures/swiss-cheese-regular.png", function() { return true; });
+        $.get("assets/textures/golden-do-rag-regular.png", function() { return true; });
+        $.get("assets/textures/swiss-cheese-solid.png", function() { return true; });
+        $.get("assets/textures/land-o-cakes-expired.png", function() { return true; });
+        $.get("assets/textures/xbox-broken-logo.png", function() { return true; });
+        $.get("assets/textures/land-o-cakes-regular.png", function() { return true; });
+        $.get("assets/textures/xbox-broken-rrod.png", function() { return true; });
+        $.get("assets/textures/pineapple-jacks-jacks.png", function() { return true; });
+        $.get("assets/textures/xbox-regular.png", function() { return true; });
+        $.get("assets/textures/pineapple-jacks-regular.png", function() { return true; });
+
+        render();
+      };
+
+
   body
 
+    section#titlescreen
+      section#wrapper
+        button(onclick="start()")#play Click to Play!
     div#totalscore
 
     //- Required Libraries

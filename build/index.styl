@@ -5,19 +5,57 @@ html, body, canvas
   margin 0
   overflow hidden
   position fixed
-  background-color green
-  background-image url("assets/background.png")
-  background-repeat no-repeat
-  background-size cover
-  z-index -1
   left 0
   top 0
 
 
+#titlescreen
+  background-image url("assets/titlescreen.png")
+  background-repeat no-repeat
+  background-size cover
+  z-index 10
+  height 100%
+  width 100%
+  position fixed
+  padding 0
+  margin 0
+  overflow hidden
+
+#play
+  display table
+  margin 0em auto
+  margin-top 25%
+  margin-right 6em
+  font-size 4em
+  font-family "Avenir", "Futura", "Lucida Grande", "Tahoma", "Calibri", sans-serif !important
+  background-color rgba(0,0,0,0)
+  border-radius 0px
+  border-style none
+  color rgba(223, 223, 223, 1)
+  font-weight bold
+
+#play:hover
+  cursor pointer
+
+
+canvas
+  background-image url("assets/background.png")
+  background-repeat no-repeat
+  background-size cover
+  z-index -1
+
 #totalscore
+  display none
   z-index 100
   position fixed
   float left
   top 1em
   left 1em
-  padding 1em
+  padding 2em
+  min-width 4em
+  text-align center
+  width 4em
+  font-family "Avenir", "Futura", "Lucida Grande", "Tahoma", "Calibri", sans-serif !important
+
+  background-color gray
+  color rgba(200, 200, 200, 1)

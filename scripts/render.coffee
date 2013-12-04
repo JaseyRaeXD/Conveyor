@@ -16,13 +16,13 @@ document.body.appendChild(renderer.domElement) # Canvas
 renderer.setSize(window.innerWidth, window.innerHeight)
 
 # Define a Render Loop
-render = () ->
+window.render = () ->
   scene.simulate()                # Handle Physics
   scene.update()                  # Handle Events
   renderer.render(scene, camera)  # Render the Scene
   requestAnimationFrame(render)   # Call Next Frame
 
-render() # Start Loop
+#render() # Start Loop
 
 # Adjust the Viewport on Window Resize
 window.addEventListener "resize", ->
