@@ -1,26 +1,42 @@
-# Add a Sample Box
+################################################################################
 window.items = []
-items.push new Physijs.BoxMesh(new THREE.CubeGeometry(5, 5, 5), new THREE.MeshBasicMaterial({color: 0x888888, wireframe: true}), 10)
-items.push new Physijs.BoxMesh(new THREE.CubeGeometry(5, 5, 5), new THREE.MeshBasicMaterial({color: 0x888888, wireframe: true}), 10)
-items.push new Physijs.BoxMesh(new THREE.CubeGeometry(5, 5, 5), new THREE.MeshBasicMaterial({color: 0x888888, wireframe: true}), 10)
-items.push new Physijs.BoxMesh(new THREE.CubeGeometry(5, 5, 5), new THREE.MeshBasicMaterial({color: 0x888888, wireframe: true}), 10)
+for x in [0..2]
 
-items[0].position.y = 70
-items[1].position.y = 90
-items[2].position.y = 120
-items[3].position.y = 140
+  # Define Material Parameters
+  mass        = 10
+  friction    = 1
+  restitution = 0
 
-items[0].rotation.x = 1
-items[0].rotation.z = 1
-items[0].rotation.y = 1
-items[0].setCcdMotionThreshold(0);
-items[0].setCcdSweptSphereRadius(1);
+  # Create the Object Mesh
+  geometry = new THREE.CubeGeometry(5, 5, 5)
+  material = Physijs.createMaterial(
+         new THREE.MeshLambertMaterial(), friction, restitution)
+  mesh = new Physijs.BoxMesh(geometry, material, mass)
+  mesh.position.y = 15
+  mesh.position.x += x * 50 - 30
 
-(scene.add(box) for box in items)
+  mesh.__dirtyPosition = true
+  mesh.__dirtyRotation = true
+  items.push(mesh)
+
+(scene.add(mesh) for mesh in items)
+
+################################################################################
+for mesh in items
+  mesh.addEventListener "collision", (other_object, relative_velocity, relative_rotation, contact_normal) ->
+    # blah
+
+################################################################################
+
+
+# `this` has collided with `other_object` with an impact speed of `relative_velocity` and a rotational force of `relative_rotation` and at normal `contact_normal`
+
+#items[0].setCcdMotionThreshold(0);
+#items[0].setCcdSweptSphereRadius(1);
+#(box.__dirtyPosition = true for box in items)
+#(box.__dirtyRotation = true for box in items)
+
 # Locks the Z Axis
-(box.setAngularFactor(new THREE.Vector3(0, 0, 1)) for box in items)
+#(box.setAngularFactor(new THREE.Vector3(0, 0, 1)) for box in items)
 #(box.setAngularVelocity(new THREE.Vector3(0, 0, 1)) for box in items)
 
-box.addEventListener "collision", (other_object, relative_velocity, relative_rotation, contact_normal) ->
-  # box.translateX(50)
-  #box.setLinearVelocity(new THREE.Vector3(10, 0, 0))

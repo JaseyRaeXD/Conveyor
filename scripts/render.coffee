@@ -27,6 +27,10 @@ window.addEventListener "resize", ->
   camera.updateProjectionMatrix()
 
 # Record the Mouse Coordinates on Movement
-window.addEventListener "mousemove", (event) ->
-  console.log event.clientX
-  console.log event.clientY
+#window.addEventListener "mousemove", (event) ->
+#  console.log event.clientX
+#  console.log event.clientY
+
+#  camera.position.x -= 1
+#  scene.position.x -= 1
+  #camera.lookAt()

@@ -27,14 +27,13 @@ Physijs.Scene::update = () ->
   # box.__dirtyRotation = true
 
 scene.addEventListener "update", ->
-
-
 # the scene's physics have finished updating
-selected = null
-mouse3d  = new THREE.Vector3(0,0,0)
-mousedown = false
 
-getMouseCoordinates = (event) ->
+window.items = items = {} # Forward Declare
+mousevec = new THREE.Vector3(0,0,0)
+selected = null # Raycast Object
+
+getScreenCoordinates = (event) ->
 
   # Translate Mouse Coordinates from 2D to 3D
   screen = new THREE.Vector3(
@@ -42,37 +41,48 @@ getMouseCoordinates = (event) ->
     -(event.clientY / window.innerHeight) * 2 + 1, 0.5)
   projector = new THREE.Projector()
   projector.unprojectVector(screen, camera)
+  return screen
 
-  # Find All Objects Colliding With the Raycaster
-  raycaster = new THREE.Raycaster(camera.position, screen.sub(camera.position).normalize())
-  intersect = raycaster.intersectObjects(items)
+getMouseCoordinates = (event) ->
 
-  # Determine the Scaled Mouse Coordinates
+  # Determine the 3D World Coordinates for Cursor
+  screen    = getScreenCoordinates(event)
   direction = screen.sub(camera.position).normalize()
   distance  = - camera.position.z / direction.z
   position  = camera.position.clone().add(direction.multiplyScalar(distance))
-  mouse3d   = new THREE.Vector3(position.x, position.y, 0)
+  return new THREE.Vector3(position.x, position.y, 0)
 
-  unless intersect.length is 0
-    return intersect
+getRaycastCoordinates = (event) ->
+
+  # Find All Objects Colliding With the Raycaster
+  screen    = getScreenCoordinates(event)
+  direction = screen.sub(camera.position).normalize()
+  raycaster = new THREE.Raycaster(camera.position, direction)
+  return raycaster.intersectObjects(window.items)
 
 onMove = (event) ->
   event.preventDefault()
-  getMouseCoordinates(event)
+
   if selected
-    selected.applyCentralImpulse(mouse3d.multiplyScalar(20))
+
+    mesh_vector = new THREE.Vector3(selected.position.x, selected.position.y, 0)
+    mouse_vector = getMouseCoordinates(event)
+    resultant = mesh_vector.sub(mouse_vector)
+    resultant = resultant.multiplyScalar(-1)
+
+    console.log(resultant.length())
+    selected.applyCentralImpulse(resultant.multiplyScalar(0.75))
 
 onDown = (event) ->
   event.preventDefault()
-  intersect = getMouseCoordinates(event)
-  selected = intersect[0].object
-  if selected
-    console.log("I have picked an object!")
+  intersect = getRaycastCoordinates(event)
+  unless intersect.length is 0
+    selected  = intersect[0].object
+    console.log("I have selected an object!")
 
 onUp = (event) ->
   event.preventDefault()
   selected = null
-  mousedown = false
 
 window.addEventListener "mousedown", (event) -> onDown(event)
 window.addEventListener "mousemove", (event) -> onMove(event)
