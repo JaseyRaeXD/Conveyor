@@ -10,12 +10,12 @@ for x in [0..6]
 
   # Create the Object Mesh
   geometry = new THREE.CubeGeometry(50, 2, tilesize)
-  textures = THREE.ImageUtils.loadTexture('assets/textures/conveyor_belt.png')
+  textures = THREE.ImageUtils.loadTexture('assets/textures/conveyor-belt.png')
   material = Physijs.createMaterial(
          new THREE.MeshLambertMaterial(map: textures), friction, restitution)
   mesh = new Physijs.BoxMesh(geometry, material, mass)
-  mesh.position.x = x * -50
-  mesh.position.y = - 80
+  mesh.position.x = x * 50 + 20
+  mesh.position.y = - 36
   mesh.position.z -= 5
 
   mesh.__dirtyPosition = true

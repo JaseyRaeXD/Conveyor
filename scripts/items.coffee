@@ -1,7 +1,7 @@
 ################################################################################
 window.items = []
 
-window.spawn_object = (image, height, width, depth) ->
+window.spawn_object = (height, width, depth, image) ->
   # Define Material Parameters
   mass        = 5
   friction    = 1
@@ -13,8 +13,9 @@ window.spawn_object = (image, height, width, depth) ->
   material = Physijs.createMaterial(
          new THREE.MeshLambertMaterial(map: textures), friction, restitution)
   mesh = new Physijs.BoxMesh(geometry, material, mass)
-  mesh.position.y = -50
-  mesh.position.x = -50
+  mesh.position.y = -20
+  mesh.position.x = -80
+  mesh.position.z = -2
 
   mesh.rotation.x = Math.random()
   mesh.rotation.y = Math.random()

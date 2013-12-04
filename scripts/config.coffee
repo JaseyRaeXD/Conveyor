@@ -8,7 +8,7 @@ debug_mode = true
 cfg.gravity = new THREE.Vector3(0, -50, 0)
 
 # Camera Configuration
-cfg.position = new THREE.Vector3(0, 30, 70)
+cfg.position = new THREE.Vector3(0, 10, 120)
 cfg.aspect   = window.innerWidth / window.innerHeight
 cfg.fov      = 35
 cfg.near     = 1
