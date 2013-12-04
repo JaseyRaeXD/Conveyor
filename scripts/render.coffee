@@ -1,7 +1,6 @@
 # Disable Error Logging for Performance
-if cfg.debug_mode is true
-  silentErrorHandler = -> true
-  window.onerror = silentErrorHandler
+silentErrorHandler = -> true
+window.onerror = silentErrorHandler
 
 # Render Settings
 parameters =

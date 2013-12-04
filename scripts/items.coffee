@@ -1,7 +1,7 @@
 ################################################################################
 window.items = []
 
-window.spawn_object = (height, width, depth, image) ->
+window.spawn_object = (height, width, depth, image, safe=0) ->
   # Define Material Parameters
   mass        = 5
   friction    = 1
@@ -21,6 +21,7 @@ window.spawn_object = (height, width, depth, image) ->
   mesh.rotation.y = Math.random()
   mesh.rotation.z = Math.random()
 
+  mesh.safe = safe
   mesh.__dirtyPosition = true
   mesh.__dirtyRotation = true
   items.push(mesh)

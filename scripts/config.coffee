@@ -2,7 +2,7 @@
 window.cfg = cfg = {}
 
 # General Configuration
-debug_mode = true
+debug_mode = false
 
 # Scene Configuration
 cfg.gravity = new THREE.Vector3(0, -50, 0)
@@ -12,4 +12,4 @@ cfg.position = new THREE.Vector3(0, 10, 120)
 cfg.aspect   = window.innerWidth / window.innerHeight
 cfg.fov      = 35
 cfg.near     = 1
-cfg.far      = 1000
+cfg.far      = 500
