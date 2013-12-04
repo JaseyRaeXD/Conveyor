@@ -40,7 +40,7 @@ Physijs.Scene::update = () ->
     if belt.position.x >= 125
       belt.position.x = -250
 
-    velocity = 10
+    velocity = 3
     belt.setLinearVelocity(new THREE.Vector3(velocity,0,0))
     belt.position.x += 0.016 * velocity
     belt.__dirtyPosition = true
