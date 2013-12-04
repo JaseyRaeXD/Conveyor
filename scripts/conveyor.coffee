@@ -6,12 +6,13 @@ for x in [0..15]
   mass        = 0
   friction    = 1
   restitution = 0.15
-  tilesize    = 25
+  tilesize    = 20
 
   # Create the Object Mesh
   geometry = new THREE.CubeGeometry(tilesize, 2, tilesize)
+  textures = THREE.ImageUtils.loadTexture('assets/conveyor_belt.png')
   material = Physijs.createMaterial(
-         new THREE.MeshLambertMaterial(), friction, restitution)
+         new THREE.MeshLambertMaterial(map: textures), friction, restitution)
   mesh = new Physijs.BoxMesh(geometry, material, mass)
   mesh.position.y = - 15
   mesh.position.x += x * tilesize - 10 * tilesize
@@ -30,6 +31,3 @@ for mesh in conveyor
     # blah
 
 ################################################################################
-
-
-# `this` has collided with `other_object` with an impact speed of `relative_velocity` and a rotational force of `relative_rotation` and at normal `contact_normal`

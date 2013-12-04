@@ -5,6 +5,7 @@ if cfg.debug_mode is true
 
 # Render Settings
 parameters =
+  alpha: true
   antialias: true
   clearColor: 0xFFFFFF
   maxLights: 16
@@ -14,7 +15,7 @@ parameters =
 renderer = new THREE.WebGLRenderer(parameters) # Render
 document.body.appendChild(renderer.domElement) # Canvas
 renderer.setSize(window.innerWidth, window.innerHeight)
-renderer.setClearColor(parameters.clearColor, 1.0)
+#renderer.setClearColor(parameters.clearColor, 0.1)
 
 # Define a Render Loop
 render = () ->
