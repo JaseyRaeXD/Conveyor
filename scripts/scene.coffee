@@ -30,6 +30,38 @@ scene.addEventListener "update", ->
 
 
 # the scene's physics have finished updating
+selected = null
+
+getMouseCoordinates = (event) ->
+
+  # Translate Mouse Coordinates from 2D to 3D
+  screen = new THREE.Vector3(
+     (event.clientX / window.innerWidth)  * 2 - 1,
+    -(event.clientY / window.innerHeight) * 2 + 1, 0.5)
+  projector = new THREE.Projector()
+  projector.unprojectVector(screen, camera)
+
+  # Find All Objects Colliding With the Raycaster
+  raycaster = new THREE.Raycaster(camera.position, screen.sub(camera.position).normalize())
+  intersect = raycaster.intersectObjects(items)
+
+  console.log(intersect.length)
+
+onMove = (event) ->
+  event.preventDefault()
+
+onDown = (event) ->
+  event.preventDefault()
+  getMouseWorldPosition(event)
+
+onUp = (event) ->
+  event.preventDefault()
+  selected = null
+
+window.addEventListener "mousedown", (event) -> onDown(event)
+window.addEventListener "mousemove", (event) -> onMove(event)
+window.addEventListener "mouseup",   (event) -> onUp(event)
+window.addEventListener "mouseout",  (event) -> onUp(event)
 
 # Forward Locals to Globals
 window.scene  = scene
