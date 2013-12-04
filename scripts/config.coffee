@@ -1,6 +1,9 @@
 # Forward the Namespace
 window.cfg = cfg = {}
 
+# General Configuration
+debug_mode = true
+
 # Scene Configuration
 cfg.gravity = new THREE.Vector3(0, -50, 0)
 
