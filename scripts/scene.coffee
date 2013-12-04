@@ -46,13 +46,18 @@ getMouseCoordinates = (event) ->
   intersect = raycaster.intersectObjects(items)
 
   console.log(intersect.length)
+  if intersect.length is 1 then selected = intersect[0]
 
 onMove = (event) ->
   event.preventDefault()
+  getMouseCoordinates(event)
 
 onDown = (event) ->
   event.preventDefault()
-  getMouseWorldPosition(event)
+  getMouseCoordinates(event)
+  items[0].applyCentralImpulse(new THREE.Vector3(50,0,0))
+
+  #items[0].applyCentralImpulse(10, 0)
 
 onUp = (event) ->
   event.preventDefault()

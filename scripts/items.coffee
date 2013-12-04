@@ -20,4 +20,4 @@ items[0].setCcdSweptSphereRadius(1);
 
 box.addEventListener "collision", (other_object, relative_velocity, relative_rotation, contact_normal) ->
   # box.translateX(50)
-  box.setLinearVelocity(new THREE.Vector3(10, 0, 0))
+  #box.setLinearVelocity(new THREE.Vector3(10, 0, 0))

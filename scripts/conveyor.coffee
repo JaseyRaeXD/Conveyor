@@ -4,7 +4,7 @@ for x in [0..10]
 
   # Define Material Parameters
   mass        = 0
-  friction    = 0
+  friction    = 1
   restitution = 1
 
   # Create the Object Mesh
