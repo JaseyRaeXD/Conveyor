@@ -1,34 +1,24 @@
+# Load Configuration Variables
+cfg = window.cfg
+
 # Load the Physics Engine
 Physijs.scripts.worker = "build/physijs/physijs_worker.js"
 Physijs.scripts.ammo   = "examples/js/ammo.js"
 
-# Scene Configuration
-gravity = new THREE.Vector3(0, -9.81, 0)
-
 # Define the Scene
 scene = new Physijs.Scene
-scene.setGravity(gravity)
-
-# Camera Configuration
-position = new THREE.Vector3(0, 10, 50)
-aspect   = window.innerWidth / window.innerHeight
-fov      = 70
-near     = 1
-far      = 1000
+scene.setGravity(cfg.gravity)
 
 # Create the Camera
 camera = new THREE.PerspectiveCamera(
-  fov,    # Field of View
-  aspect, # Aspect Ratio
-  near,   # Near Clipping Plane
-  far)    # Far  Clipping Plane
-camera.position = position
+  cfg.fov,    # Field of View
+  cfg.aspect, # Aspect Ratio
+  cfg.near,   # Near Clipping Plane
+  cfg.far)    # Far  Clipping Plane
+camera.position = cfg.position
 camera.lookAt(scene.position)
 scene.add(camera)
 
-pointLight = new THREE.PointLight(0xffffff)
-pointLight.position.set 0, 300, 200
-scene.add pointLight
 
 conveyor = []
 for x in [0..10]
