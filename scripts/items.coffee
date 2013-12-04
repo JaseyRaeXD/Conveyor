@@ -17,6 +17,9 @@ items[0].setCcdMotionThreshold(0);
 items[0].setCcdSweptSphereRadius(1);
 
 (scene.add(box) for box in items)
+# Locks the Z Axis
+(box.setAngularFactor(new THREE.Vector3(0, 0, 1)) for box in items)
+#(box.setAngularVelocity(new THREE.Vector3(0, 0, 1)) for box in items)
 
 box.addEventListener "collision", (other_object, relative_velocity, relative_rotation, contact_normal) ->
   # box.translateX(50)
