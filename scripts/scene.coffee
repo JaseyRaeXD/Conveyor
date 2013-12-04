@@ -36,9 +36,17 @@ Physijs.Scene::update = () ->
       box.applyCentralImpulse(sky_vector)
 
   for belt in conveyor
-    belt.setLinearVelocity(new THREE.Vector3(1,0,0))
-    belt.position.x += 0.016
+
+    if belt.position.x >= 125
+      belt.position.x = -250
+
+    velocity = 10
+    belt.setLinearVelocity(new THREE.Vector3(velocity,0,0))
+    belt.position.x += 0.016 * velocity
+
+
     belt.__dirtyPosition = true
+
 # Forward Locals to Globals
 window.scene  = scene
 window.camera = camera

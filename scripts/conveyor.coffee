@@ -1,19 +1,21 @@
 ################################################################################
 window.conveyor = []
-for x in [0..10]
+for x in [0..15]
 
   # Define Material Parameters
   mass        = 0
   friction    = 1
   restitution = 0.15
+  tilesize    = 25
 
   # Create the Object Mesh
-  geometry = new THREE.CubeGeometry(15, 2, 15)
+  geometry = new THREE.CubeGeometry(tilesize, 2, tilesize)
   material = Physijs.createMaterial(
          new THREE.MeshLambertMaterial(), friction, restitution)
   mesh = new Physijs.BoxMesh(geometry, material, mass)
   mesh.position.y = - 15
-  mesh.position.x += x * 15 - 70
+  mesh.position.x += x * tilesize - 10 * tilesize
+  mesh.position.z -= 2
 
   mesh.__dirtyPosition = true
   mesh.__dirtyRotation = true
