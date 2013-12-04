@@ -75,20 +75,13 @@ Physijs.Scene::update = () ->
 
   if framecount % interval is 0
     switch Math.floor(Math.random() * stage)
-      # Stage 0
       when 0  then window.spawn_object(5, 5, 5, 'playstation-regular.png')
-
-      # Stage 1
       when 1  then window.spawn_object(5, 5, 5, 'swiss-cheese-moldy.png', 1)
       when 2  then window.spawn_object(5, 5, 5, 'commodore-crunch-regular.png')
       when 3  then window.spawn_object(5, 5, 5, 'commodore-crunch-misprint.png', 1)
-
-      # Stage 2
       when 4  then window.spawn_object(5, 5, 5, 'land-o-cakes-regular.png')
       when 5  then window.spawn_object(5, 5, 5, 'pineapple-jacks-regular.png')
       when 6  then window.spawn_object(5, 5, 5, 'swiss-cheese-regular.png')
-
-      # Stage 3
       when 7  then window.spawn_object(5, 5, 5, 'golden-do-rag-regular.png')
       when 8  then window.spawn_object(5, 5, 5, 'land-o-cakes-expired.png', 1)
       when 9  then window.spawn_object(5, 5, 5, 'swiss-cheese-solid.png', 1)
