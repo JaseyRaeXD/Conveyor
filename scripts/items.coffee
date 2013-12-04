@@ -14,7 +14,7 @@ window.spawn_object = (height, width, depth, image, safe=0) ->
          new THREE.MeshLambertMaterial(map: textures), friction, restitution)
   mesh = new Physijs.BoxMesh(geometry, material, mass)
   mesh.position.y = -20
-  mesh.position.x = -80
+  mesh.position.x = -120
   mesh.position.z = -2
 
   mesh.rotation.x = Math.random()
